@@ -1,0 +1,2 @@
+# Traffic-Sign-Recognition--HSV-SVM--BelgiumTSC
+Traffic sign recognition is an advanced driver assistance system which can recognize road signs and display the corresponding information in the vehicle. It consists of two parts, Sign Detection and Sign Classification. In detection we will detect the coordinates and size of sign board in the image and in classification we try to find that what this signal represent or what class this signal belongs. In our case there are eight classes of sign boards that need to classify they are shown below:
