@@ -14,18 +14,19 @@ We apply Median Filter on each channel for removing the salt-and-pepper noise in
 
 ![Input Image](Report_Images/2.jpg)
 
-Figure(2): Input Image
+                                           Figure(2): Input Image
 
 ![Median Filter output](Report_Images/3.png)
 
-Figure(3): Median Filter output
+                                           Figure(3): Median Filter output
+
 
 ### b.	Contrast Normalization over Each Channel:
-    We first do Normalization of RGB image each channel value range from 0 to 1, then apply contrast normalization in the range 0 to 1 by 
-    applying below formula:
-
-        Difference = img_channel.max() - img_channel.min()
-        Contrast_Normalize_channel = (1/ Difference) *(img_channel- img_channel.min())
+    We first do Normalization of RGB image each channel value range from 0 to 1, then apply contrast normalization in the range 0 to 1 
+    by applying below formula:
+    
+       Difference = img_channel.max() - img_channel.min()
+       Contrast_Normalize_channel = (1/ Difference) *(img_channel- img_channel.min())
 
 ### c.	Normalize Image Blue and Red Channel Intensity:
 
