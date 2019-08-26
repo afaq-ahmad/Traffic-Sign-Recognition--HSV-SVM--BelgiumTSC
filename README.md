@@ -12,11 +12,11 @@ Let describe the approach work in different steps to cover up the detection and 
 
 We apply Median Filter on each channel for removing the salt-and-pepper noise in the image. The output image and input shown below:
 
-![Input Image](2.jpg)
+![Input Image](Report_Images/2.jpg)
 
 Figure(2): Input Image
 
-![Median Filter output](3.png)
+![Median Filter output](Report_Images/3.png)
 
 Figure(3): Median Filter output
 
@@ -31,7 +31,7 @@ Figure(3): Median Filter output
 
 We applied blue and red channel intensity normalization method that is describe in [1]. For each channel red or blue the formula is difference and Below outputs of each channel also shown:
 
-![Normalize Image Blue and Red Channel Intensity](4.JPG)
+![Normalize Image Blue and Red Channel Intensity](Report_Images/4.JPG)
  			 
 As it can be clearly seen that there are no major red color in the image that why left side image has no major bright area.
 
@@ -46,25 +46,25 @@ As it can be clearly seen that there are no major red color in the image that wh
     regions are detected a binary image for both the red and green mser regions are formed as shown below.
 
 
-![mser](5.JPG)
+![mser](Report_Images/5.JPG)
 
 ### e.	Threshold in HSV color space:
 
 The HSV Color Space serves better to identify appropriate bands for H, S, V channels to model the color composition of a traffic sign. Also it isolates intensity/brightness (unlike RGB) which helps with robustness to illumination. We choose colors ranges in HSV color space to extract these ranges.http://colorizer.org/. These ranges color Threshold Defined Below, after selecting these colors ranges we delete all other colors in the image and our image become binary. We only choose two channels saturation, lightness range of Red and blue to detect it. Note that we normalize the hsv image between 0 to 1 range.
 
-![Threshold in HSV color space](6.JPG)
+![Threshold in HSV color space](Report_Images/6.JPG)
 
 ### f.	Combining HSV with MSER:
 
 To remove the false outcomes, we have used two combined approaches method in which we take common part of image in which HSV threshold image and MSER generated image and fill the inside area of connected region. In the proceeding image the red channel become zero as there are no common part in HSV and MSER. By this method more noise removed and accuracy of detection increased. The output is shown below:
 
-![Combining HSV with MSER](7.jpg)
+![Combining HSV with MSER](Report_Images/7.jpg)
 
 ### g.	Blob/Contours based image cropping:
 
 We first applied blob or contours on the Combined image of HSV and MSER, and crop the image if the contour area is greater than 700 to avoid false readings. We have also use aspect ratio filter between 1.21 and 0.59, if the object aspect ratio matches it will then forward and crop the image on that base. We have also set the threshold on number of maximum contour will be detected in one image that is 5, means that if more than 5 contours detected at a time we will only choose bigger 5 contours based on the area. The crop image of sign board shown below:
 
-![Blob/Contours based image cropping](8.png)
+![Blob/Contours based image cropping](Report_Images/8.png)
 
 
 
@@ -75,7 +75,7 @@ We first applied blob or contours on the Combined image of HSV and MSER, and cro
 
 HOG decomposes an image into small squared cells, computes an histogram of oriented gradients in each cell, normalizes the result using a block-wise pattern, and return a descriptor for each cell. We first apply median filter then reshape the crop image to [64,64]. We choose [4,4] size of cell so that we can preserve the shape information. HOG generates14112 features array. The output of HOG is shown below:
 
-![Histogram of oriented gradients (HOG) Features from Traffic Sign](9.png)
+![Histogram of oriented gradients (HOG) Features from Traffic Sign](Report_Images/9.png)
 
 We Stack the cells into a squared image region used it as an image window descriptor for object detection, by SVM Classifier.
 
@@ -92,7 +92,7 @@ After apply PCA for 40 components, we have remain small parameters that will pro
 A Support Vector Machine (SVM) is a discriminative classifier formally defined by a separating hyperplane. In other words, given labeled training data (supervised learning), the algorithm outputs an optimal hyperplane which categorizes new examples. In two dimensional space this hyperplane is a line dividing a plane in two parts where in each class lay in either side.
 One Example is shown in below pictures where you can see the data to divide into two dimensional space.
 
-![SVM Classifier](10.png)
+![SVM Classifier](Report_Images/10.png)
 
 
 The learning of the hyperplane in linear SVM is done by transforming the problem using some linear algebra. This is where the kernel plays role. The kernel functions are used to map the original dataset (linear/nonlinear ) into a higher dimensional space with view to making it linear dataset. The linear, polynomial and RBF or Gaussian kernel are simply different in case of making the hyperplane decision boundary between the classes. Usually linear and polynomial kernels are less time consuming and provides less accuracy than the rbf or Gaussian kernels.
@@ -104,7 +104,7 @@ SVM Mean Accuracy of Test dataset:  0.8552338530066815
 
 The cropped image features are forward to the SVM classifier which predict the class of sign board, that is displayed on the adjacent of Input image shown below:
 
-![Results](11.png)
+![Results](Report_Images/11.png)
 
 ## 3)	Drawbacks and Future Approach:
 
