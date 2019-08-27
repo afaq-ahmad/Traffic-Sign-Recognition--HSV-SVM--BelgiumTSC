@@ -189,5 +189,6 @@ The cropped image features are forward to the SVM classifier which predict the c
 
 
 
-#### Denote:
+#### Support:
 Bitcoin: 3QFpMuvMcMaZ6cQUHqgrd2mDirz1JZi1W8
+
