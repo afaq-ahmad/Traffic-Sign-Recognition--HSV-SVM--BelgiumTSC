@@ -186,3 +186,8 @@ The cropped image features are forward to the SVM classifier which predict the c
 
           - It will load the SVM and PCA trained model from the same directory where code is running.
           - Load the image apply Svm and Pca.
+
+
+
+#### Denote:
+Bitcoin: 3QFpMuvMcMaZ6cQUHqgrd2mDirz1JZi1W8
